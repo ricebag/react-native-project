@@ -3,13 +3,20 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import { default as DoggyImage } from '../components/DoggyImage'
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Welcome to the Home Screen</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+
+      <Text>Here's a picture of a Chocolate Lab to keep you company</Text>
+      <DoggyImage />
+      <Text>DAMN BOY</Text>
+      <Text>HE THICK BOY</Text>
+      <Text>THAT'S A THICK ASS BOYYYYYYYY</Text>
+      {/* <EditScreenInfo path="/screens/HomeScreen.tsx" /> */}
     </View>
   );
 }
