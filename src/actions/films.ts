@@ -22,7 +22,8 @@ export const removeFilmFomList = (id: string) => ({
   payload: id
 })
 
-export const fetchFilmsList = (dispatch: Function, getState: Function) => async () => {
+export const fetchFilmsList = () => async (dispatch: Function, getState: Function) => {
+  console.log('hello')
   try {
     console.log('here')
     // fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=c0ce12d8`)

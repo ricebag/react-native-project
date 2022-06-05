@@ -21,6 +21,7 @@ class HomeScreen extends Component {
 
   async componentDidMount() {
     const { films, fetchFilmsList } = this.props
+    console.log('\n\n', { films, fetchFilmsList }, '\n\n')
     if (_.isEmpty(films)) return fetchFilmsList()
   }
 
@@ -60,14 +61,11 @@ const mapStateToProps = state => ({
   watchList: state.watchList
 });
 
-const mapDispatchToProps = (dispatch: Function, state: Function) => {
-  const store = useStore()
-  return {
-    addToWatchList: addToWatchList(dispatch, store.getState),
-    fetchFilmsList: fetchFilmsList(dispatch, store.getState),
-    nextFilm: nextFilm(dispatch, store.getState),
-  }
-}
+const mapDispatchToProps = ({
+  addToWatchList,
+  fetchFilmsList,
+  nextFilm,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
 

@@ -52,14 +52,11 @@ const mapStateToProps = (state: any) => ({
   watchList: state.watchList
 });
 
-const mapDispatchToProps = async (dispatch: Function) =>
-({
-  removeFilm: removeFilm(dispatch)
+const mapDispatchToProps = ({
+  removeFilm
 })
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(ListScreen)
-
 
 const styles = StyleSheet.create({
   container: {

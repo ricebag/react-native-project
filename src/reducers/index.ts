@@ -1,4 +1,6 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger'
+import thunk from 'redux-thunk';
 
 import filmsReducer from './films';
 import selectedFilmReducer from './selected-film';
@@ -12,4 +14,4 @@ const rootReducer = combineReducers(
   }
 );
 
-export default () => createStore(rootReducer);
+export default () => createStore(rootReducer, applyMiddleware(thunk, createLogger()));

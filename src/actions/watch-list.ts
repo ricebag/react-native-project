@@ -20,7 +20,7 @@ export const removeFilmFromWatchList = (id: string) => ({
   payload: id
 })
 
-export const addToWatchList = (dispatch: Function, getState: Function) => async (film: Film) => {
+export const addToWatchList = (film: Film) => async (dispatch: Function, getState: Function) => {
   try {
     const state = await getState()
 
@@ -37,7 +37,7 @@ export const addToWatchList = (dispatch: Function, getState: Function) => async 
   }
 }
 
-export const nextFilm = (dispatch: Function, getState: Function) => async (film: Film) => {
+export const nextFilm = (film: Film) => async (dispatch: Function, getState: Function) => {
   try {
     const state = await getState()
 
@@ -54,7 +54,7 @@ export const nextFilm = (dispatch: Function, getState: Function) => async (film:
   }
 }
 
-export const removeFilm = (dispatch: Function, getState: Function) => async (imdbID: string) => {
+export const removeFilm = (imdbID: string) => async (dispatch: Function) => {
   try {
     dispatch(removeFilmFromWatchList(imdbID))
   } catch (error) {
