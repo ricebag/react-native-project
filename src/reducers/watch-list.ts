@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { Film } from '../actions/films'
 
 type Action = {
   type: string,
@@ -13,12 +14,7 @@ const watchListReducer = (state = [], action: Action) => {
         action.payload
       ]
     case 'REMOVE_FROM_WATCH_LIST':
-      // return []
-      const abc = _.filter(state, (film) => {
-        console.log({ state, film, payload: action.payload })
-        return film.imdbID !== action.payload
-      })
-      return abc
+      return _.filter(state, (film: Film) => film.imdbID !== action.payload)
     default:
       return state
   }

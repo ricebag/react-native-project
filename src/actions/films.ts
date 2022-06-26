@@ -23,9 +23,7 @@ export const removeFilmFomList = (id: string) => ({
 })
 
 export const fetchFilmsList = () => async (dispatch: Function, getState: Function) => {
-  console.log('hello')
   try {
-    console.log('here')
     // fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=c0ce12d8`)
     // const resp = await fetch(`http://www.omdbapi.com/?s=batman&apikey=c0ce12d8`)
 
@@ -106,42 +104,11 @@ export const fetchFilmsList = () => async (dispatch: Function, getState: Functio
 
     dispatch(addFilmsList(mockData))
 
-
-    console.log('here 2')
     const film = Math.floor(Math.random() * mockData.length);
     const selectedFilm = mockData[film]
     // const response = await fetch(`http://www.omdbapi.com/?i=${selectedFilm.imdbID}&apikey=c0ce12d8`).then(resp => resp.json)
-
-    const mockFilm = {
-      "Title": "Batman: The Animated Series",
-      "Year": "1992–1995",
-      "Rated": "TV-PG",
-      "Released": "05 Sep 1992",
-      "Runtime": "23 min",
-      "Genre": "Animation, Action, Adventure",
-      "Director": "N/A",
-      "Writer": "Bob Kane, Eric Radomski, Bruce Timm",
-      "Actors": "Kevin Conroy, Loren Lester, Efrem Zimbalist Jr.",
-      "Plot": "The Dark Knight battles crime in Gotham City with occasional help from Robin and Batgirl.",
-      "Language": "English",
-      "Country": "United States",
-      "Awards": "Won 1 Primetime Emmy. 5 wins & 19 nominations total",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOTM3MTRkZjQtYjBkMy00YWE1LTkxOTQtNDQyNGY0YjYzNzAzXkEyXkFqcGdeQXVyOTgwMzk1MTA@._V1_SX300.jpg",
-      "Ratings": [
-        {
-          "Source": "Internet Movie Database",
-          "Value": "9.0/10"
-        }
-      ],
-      "Metascore": "N/A",
-      "imdbRating": "9.0",
-      "imdbVotes": "99,833",
-      "imdbID": "tt0103359",
-      "Type": "series",
-      "totalSeasons": "4",
-      "Response": "True"
-    }
-    dispatch(updateSelectedFilm(mockFilm))
+    
+    dispatch(updateSelectedFilm(selectedFilm))
 
   } catch (error) {
     console.error(error)

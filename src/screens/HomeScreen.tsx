@@ -10,9 +10,6 @@ import { fetchFilmsList } from '../actions/films'
 import { addToWatchList, nextFilm } from '../actions/watch-list'
 
 class HomeScreen extends Component {
-  // const [isLoading, setLoading] = useState(true);
-  // const [data, setData] = useState([]);
-  // console.log({ data, Config, config });
   constructor(props) {
     super(props)
     this.AddtoList = this.AddtoList.bind(this)
@@ -21,7 +18,6 @@ class HomeScreen extends Component {
 
   async componentDidMount() {
     const { films, fetchFilmsList } = this.props
-    console.log('\n\n', { films, fetchFilmsList }, '\n\n')
     if (_.isEmpty(films)) return fetchFilmsList()
   }
 
@@ -32,24 +28,18 @@ class HomeScreen extends Component {
 
   RemoveFromOptions() {
     const { nextFilm, selectedFilm } = this.props
-    console.log('Left', { nextFilm, selectedFilm })
     return nextFilm(selectedFilm)
   }
 
   render() {
     const { films, watchList } = this.props
-    console.log('were here', { films, watchList })
 
     return (
       <View style={styles.container}>
         <FilmCard film={this.props.selectedFilm} />
-        {/* {abc} */}
-        <Button color='red' onPress={this.RemoveFromOptions} title="Left">Left</Button>
-        <Button color='green' onPress={this.AddtoList}>
 
-          <FontAwesome name="plus" color='black' size={24} />
-          {/* <FontAwesome name="plus" size={24} color="black" /> */}
-        </Button>
+        <FontAwesome name="plus" color='black' size={24} onPress={this.AddtoList} />
+        <FontAwesome name="minus" color='black' size={24} onPress={this.RemoveFromOptions} />
       </View>
     );
   }

@@ -2,33 +2,25 @@ import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, FlatList, Button, Alert } from 'react-native';
 import { connect, useStore } from 'react-redux';
 import _ from 'lodash';
+import { FontAwesome } from '@expo/vector-icons';
 
 import { Text, View } from '../components/Themed';
 import { Film } from '../actions/films'
 import { removeFilm } from '../actions/watch-list'
 
 class ListScreen extends Component {
-
   render() {
-    // let list = [{ name: 'Bacon' }, { name: 'Pancakes' }, { name: 'Green tea' }, { name: 'Coffee' }, { name: 'Cucumber' }]
     const { watchList, removeFilm } = this.props
-    console.log({ watchList })
 
-    const Item = ({ title, imdbID }: { title: string, imdbID: string }) => {
-      return (
-        <View style={styles.item} key={imdbID}>
-          <Text >{title}</Text>
-          <button onClick={() => {
-            console.log({ imdbID })
-            return removeFilm(imdbID)
-          }}>D</button>
-        </View>
-      )
-    };
+    const Item = ({ title, imdbID }: { title: string, imdbID: string }) => (
+      <View style={styles.item} key={imdbID}>
+        <Text >{title}</Text>
+        <FontAwesome name="minus" color='black' size={24} onPress={() => removeFilm(imdbID)} />
+      </View>
+    )
 
     const renderItem = ({ item, index }: { item: Film, index: number }) =>
       (<Item title={item.Title} key={item.imdbID} imdbID={item.imdbID} />)
-
 
     return (
       <View style={styles.container}>

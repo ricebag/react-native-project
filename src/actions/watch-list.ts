@@ -23,11 +23,8 @@ export const removeFilmFromWatchList = (id: string) => ({
 export const addToWatchList = (film: Film) => async (dispatch: Function, getState: Function) => {
   try {
     const state = await getState()
-
-    console.log({ state })
     const nextFilmId = Math.floor(Math.random() * state.films.length);
     const nextFilm = state.films[nextFilmId]
-    console.log(nextFilm)
 
     dispatch(addFilmToWatchList(film))
     dispatch(removeFilmFomList(film.imdbID))
@@ -40,12 +37,8 @@ export const addToWatchList = (film: Film) => async (dispatch: Function, getStat
 export const nextFilm = (film: Film) => async (dispatch: Function, getState: Function) => {
   try {
     const state = await getState()
-
-    console.log({ state, film })
     const nextFilmId = Math.floor(Math.random() * state.films.length);
     const nextFilm = state.films[nextFilmId]
-
-    console.log({ state, nextFilm, nextFilmId, film })
 
     dispatch(removeFilmFomList(film.imdbID))
     dispatch(updateSelectedFilm(nextFilm))
